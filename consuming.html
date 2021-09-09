@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link href="themes/prism.css" rel="stylesheet" />
+    <script src="prism.js"></script>
+    <title>Consuming API in Java</title>
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <nav class="site-nav grid">
+      <a href="index.html">
+        <h1>Ini Olorunnishola</h1>
+      </a>
+      <ul>
+        <li>
+          <a href="assets/Ini_Favour_Olorunnishola_GR.pdf" target="_blank"
+            >Resume</a
+          >
+        </li>
+        <li>
+          <a href="#contact">Connect</a>
+        </li>
+      </ul>
+
+      <span onclick="openNav()" class="menu-logo">
+        <img src="assets/outline_menu_black_24dp.png" alt="menu" />
+      </span>
+
+      <div id="myNav" class="overlay">
+        <!-- Button to close the overlay navigation -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <div class="overlay-content">
+          <a href="assets/Ini_Favour_Olorunnishola_GR.pdf" target="_blank"
+            >Resume</a
+          >
+          <a href="#contact" onclick="closeNav()">Connect</a>
+        </div>
+      </div>
+    </nav>
+    <section id="portfolio2">
+      <h3>Consuming API in Java</h3>
+      <div class="grid2">
+        <a href="https://github.com/olo-ini/consuming-api" target="_blank" class="button">Code</a>
+      </div>
+
+      <section id="blog-body">
+        <p class="leading">
+          In this tutorial, we will be building a Spring Boot Application that
+          consumes a web API. The application consumes the API and returns a
+          JSON response. The application is a RESTFUL API itself as requests
+          made to the application will return the JSON object that it initially
+          consumed. The sample API being consumed today is a list of FX rates
+          against USD. This can be found
+          <a
+            href="https://api.exchangerate-api.com/v4/latest/USD"
+            target="_blank"
+            >here</a
+          >
+        </p>
+        <br />
+        <h3>Spring Boot</h3>
+        <br />
+
+        <p class="leading">
+          Spring Boot allows you create stand-alone Spring applications. There
+          are many ways to start a Spring Boot Application. For this project, I
+          used the <a href="https://start.spring.io/">Spring Intializr</a> which
+          allows you fill in your project details, pick out your options and
+          download a bundled up project as a zip file <br /><br />
+        </p>
+
+        <h3>Let's create the model</h3>
+        <br />
+
+        <p class="leading">
+          The model is a representation of the data we are going to be
+          receiving. We need to create these data models (java classes) so we
+          can store the JSON received as POJO (Plain Old Java Objects) By
+          looking at the JSON data, we have an idea of the schema. I created
+          Root and Rates data models to look like this
+        </p>
+        <br />
+
+        <code class="language-java">
+          package com.example.consumingrest;<br />
+
+          import com.fasterxml.jackson.annotation.JsonProperty;<br /><br />
+
+          public class Root{<br />
+          @JsonProperty(&#x22;provider&#x22;) <br />
+          public String getProvider() { <br />
+          &#x9;&#x9; return this.provider; } <br />
+          public void setProvider(String provider) { <br />
+          &#x9;&#x9; this.provider = provider; } <br />
+          String provider;<br /><br />
+
+          @JsonProperty(&#x22;WARNING_UPGRADE_TO_V6&#x22;) <br />
+          public String getWARNING_UPGRADE_TO_V6() { <br />
+          &#x9;&#x9; return this.wARNING_UPGRADE_TO_V6; } <br />
+          public void setWARNING_UPGRADE_TO_V6(String wARNING_UPGRADE_TO_V6) {
+          <br />
+          &#x9;&#x9; this.wARNING_UPGRADE_TO_V6 = wARNING_UPGRADE_TO_V6; }
+          <br />
+          String wARNING_UPGRADE_TO_V6;<br /><br />
+
+          @JsonProperty(&#x22;terms&#x22;) <br />
+          public String getTerms() { <br />
+          &#x9;&#x9; return this.terms; } <br />
+          public void setTerms(String terms) { <br />
+          &#x9;&#x9; this.terms = terms; } <br />
+          String terms; <br /><br />
+
+          @JsonProperty(&#x22;base&#x22;) <br />
+          public String getBase() { <br />
+          &#x9;&#x9; return this.base; } <br />
+          public void setBase(String base) { <br />
+          &#x9;&#x9; this.base = base; } <br />
+          String base;<br />
+
+          ... </code
+        ><br /><br />
+
+        <p class="leading">
+          This Class allows us capture the higher layer properties like terms,
+          date and time_last_updated. The deeper nested properties like that
+          exchange rates themselves, will be captured in this model below
+        </p><br><br>
+
+        <code>
+          public class Rates{<br><br>
+            @JsonProperty(&#x22;USD&#x22;) <br>
+            public int getUSD() { <br>
+        &#x9;&#x9; return this.uSD; } <br>
+            public void setUSD(int uSD) { <br>
+        &#x9;&#x9; this.uSD = uSD; } <br>
+            int uSD; <br><br>
+            @JsonProperty(&#x22;AED&#x22;) <br>
+            public double getAED() { <br>
+        &#x9;&#x9; return this.aED; } <br>
+            public void setAED(double aED) { <br>
+        &#x9;&#x9; this.aED = aED; } <br>
+            double aED;<br><br>
+            @JsonProperty(&#x22;AFN&#x22;) <br>
+            public double getAFN() { <br>
+        &#x9;&#x9; return this.aFN; } <br>
+            public void setAFN(double aFN) { <br>
+        &#x9;&#x9; this.aFN = aFN; } <br>
+            double aFN;<br>
+        </code><br><br>
+
+        <p class="leading">We can now assume we have converted all JSON data to POJO format</p>
+        <h3>Controller Class</h3><br>
+        <p class="leading">We will be using WebClient to hold and consume the external REST service URI. </p><br><br>
+        <code>
+          @RestController
+            public class MyController {
+            &#x9;<br>
+            &#x9;<br>private final String FX_API = &#x22;https://api.exchangerate-api.com/v4/latest/USD&#x22;;
+            &#x9;<br>
+            &#x9;<br>@Autowired
+            &#x9;<br>private WebClient.Builder webClientBuilder;
+            &#x9;<br>
+            &#x9;<br>@GetMapping(&#x22;/rates&#x22;)
+            &#x9;<br>public Root getFx() {
+            &#x9;<br>&#x9;return webClientBuilder.build()
+            &#x9;<br>&#x9;&#x9;&#x9;.get()
+            &#x9;<br>&#x9;&#x9;&#x9;.uri(FX_API)
+            &#x9;<br>&#x9;&#x9;&#x9;.retrieve().bodyToMono(Root.class)
+            &#x9;<br>&#x9;&#x9;&#x9;.block();
+            &#x9;<br>}
+            }
+        </code><br><br>
+        <p class="leading">FX_API holds the URI we would want to consume. WebClient.Builder is a mutable builder for creating a WebClient. 
+          We pass the link through <code>.uri()</code> and retrieve the response using <code>.retrieve()</code>
+          We also pass the top level class Root to <code>.bodyToMono()</code>
+          Notice the <code>GetMapping</code> annotation just before the <code>getFx()</code> method</p>
+
+        <h3>Application Class</h3><br>
+        <code>
+            @SpringBootApplication
+            @ComponentScan(&#x22;com.example&#x22;)<br>
+            public class ConsumingRestApplication {
+            &#x9;@Bean<br>
+            &#x9;<br>public WebClient.Builder webClientBuilder() {
+            &#x9;&#x9;<br>return WebClient.builder();
+            &#x9;<br>}
+            &#x9;<br>
+            &#x9;<br>public static void main(String[] args) {
+            &#x9;&#x9;<br>SpringApplication.run(ConsumingRestApplication.class, args);
+            &#x9;}&#x9;<br>
+}
+        </code><br>
+        <p class="leading">
+          The <code>ConsumingRestApplication</code> class is used to run the application. It also returns the bean of WebClient.Builder
+          I use <code>./mvnw spring-boot:run</code> to run the application
+        </p><br>
+
+        <h3>Test it</h3>
+        <p class="leading">All that is left to do now is to test our application. To test the application, use Postman and hit the below endpoint
+         <code>http://localhost:8080/rates</code> <br><br>Using GET HTTP method. You should now have a REST call be made to an external API and the data mapped to our models</p>
+      </section>
+    </section>
+
+    <span class="grid">
+      <a href="client_portfolio.html" id="previous">Previous</a>
+      <a href="random_jokes.html" id="next">Next</a>
+    </span>
+
+    <section id="contact">
+      <h3>Let's Connect</h3>
+      <p class="leading">
+        You can hire me, collaborate with me, check up on me ...
+      </p>
+      <form data-netlify="true">
+        <input type="text" placeholder="NAME" />
+        <input type="email" placeholder="EMAIL" />
+        <textarea placeholder="YOUR MESSAGE"></textarea>
+        <button type="submit" class="button">Connect</button>
+      </form>
+    </section>
+
+    <footer>
+      <div class="grid">
+        <p class="copyright">Copyright 2020 Ini Olorunnishola olo-ini</p>
+        <ul class="social">
+          <li>
+            <a href="https://github.com/olo-ini" target="_blank">GitHub</a>
+            <a
+              href="https://www.linkedin.com/in/ini-olorunnishola-02473913a/"
+              target="_blank"
+              >LinkedIn</a
+            >
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

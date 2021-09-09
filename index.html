@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="index.js"></script>
+
+    <title>Ini Olorunnishola</title>
+  </head>
+  <body>
+    <nav class="site-nav grid">
+      <a href="index.html">
+        <h1>Ini Olorunnishola</h1>
+      </a>
+      
+      <ul>
+        <li>
+          <a href="assets/Ini_Favour_Olorunnishola_GR.pdf" target="_blank"
+            >Resume</a
+          >
+        </li>
+        <li>
+          <a href="#contact">Connect</a>
+        </li>
+      </ul>
+
+      <span onclick="openNav()" class="menu-logo">
+        <img src="assets/outline_menu_black_24dp.png" alt="menu" />
+      </span>
+
+      <div id="myNav" class="overlay">
+        <!-- Button to close the overlay navigation -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <div class="overlay-content">
+          <a href="assets/Ini_Favour_Olorunnishola_GR.pdf" target="_blank"
+            >Resume</a
+          >
+          <a href="#contact" onclick="closeNav()">Connect</a>
+        </div>
+      </div>
+    </nav>
+    <section id="welcome" class="grid">
+      <div class="welcome-text">
+        <h2>Full Stack Developer</h2>
+        <p class="leading">
+          I love building stuff that work online and playing music
+        </p>
+        <a href="#portfolio" class="button">View my stuff</a>
+      </div>
+      <div class="welcome-img">
+        <img src="assets/banner_imagee.png" alt="pic of planet" />
+      </div>
+    </section>
+    <section id="portfolio">
+      <h3>Passion Projects</h3>
+      <div class="projects grid">
+        <a href="portfolio.html">
+          <img src="assets/project_11.png" alt="space race image" />
+          <h4>My portfolio</h4>
+        </a>
+        <a href="client_portfolio.html">
+          <img src="assets/project_222.png" alt="planet boy image" />
+          <h4>Client portfolio</h4>
+        </a>
+        <a href="consuming.html">
+          <img src="assets/project_33.png" alt="captain cosmo image" />
+          <h4>Consuming API in Java</h4>
+        </a>
+        <a href="random_jokes.html">
+          <img src="assets/project_44.png" alt="captain cosmo image" />
+          <h4>Random Jokes</h4>
+        </a>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h3>Ongoing Interests</h3>
+      <ul class="grid">
+        <li>
+          <img src="assets/comet_1.png" alt="comet" />
+          <h4>HTML</h4>
+        </li>
+        <li>
+          <img src="assets/comet_2.png" alt="comet" />
+          <h4>CSS</h4>
+        </li>
+        <li>
+          <img src="assets/comet_3.png" alt="comet" />
+          <h4>Javascript</h4>
+        </li>
+        <li>
+          <img src="assets/comet_4.png" alt="comet" />
+          <h4>React</h4>
+        </li>
+        <li>
+          <img src="assets/comet_5.png" alt="comet" />
+          <h4>Java</h4>
+        </li>
+        <li>
+          <img src="assets/comet_6.png" alt="comet" />
+          <h4>Wordpress & Shopify</h4>
+        </li>
+      </ul>
+      
+    </section>
+    <section id="contact">
+      <h3>Let's Connect</h3>
+      <p class="leading">
+        You can hire me, collaborate with me, check up on me ...
+      </p>
+      <form data-netlify="true">
+        <input type="text" placeholder="NAME" />
+        <input type="email" placeholder="EMAIL" />
+        <textarea placeholder="YOUR MESSAGE"></textarea>
+        <button type="submit" class="button">Connect</button>
+      </form>
+    </section>
+    <footer>
+      <div class="grid">
+        <p class="copyright">Copyright 2020 Ini Olorunnishola olo-ini</p>
+        <ul class="social">
+          <li>
+            <a href="https://github.com/olo-ini" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/ini-olorunnishola-02473913a/" target="_blank">LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

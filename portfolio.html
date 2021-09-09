@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Portfolio</title>
+    <script src="index.js"></script>
+</head>
+<body>
+    <nav class="site-nav grid">
+        <a href="index.html">
+            <h1>Ini Olorunnishola</h1>
+          </a>
+        <ul>
+            <li>
+                <a href="assets/Ini_Favour_Olorunnishola_GR.pdf" target="_blank">Resume</a>
+            </li>
+            <li>
+                <a href="#contact">Connect</a>
+            </li>
+        </ul>
+
+        <span onclick="openNav()" class="menu-logo">
+            <img src="assets/outline_menu_black_24dp.png" alt="menu" />
+          </span>
+    
+          <div id="myNav" class="overlay">
+            <!-- Button to close the overlay navigation -->
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+              >&times;</a
+            >
+            <div class="overlay-content">
+              <a href="assets/Ini_Favour_Olorunnishola_GR.pdf" target="_blank"
+                >Resume</a
+              >
+              <a href="#contact" onclick="closeNav()">Connect</a>
+            </div>
+          </div>
+    </nav>
+    <section id="portfolio2">
+        <h3>Building my Portfolio</h3>
+        <div class="grid2">
+            <a href="https://github.com/olo-ini/portfolio" target="_blank" class="button">Code</a>
+            <a href="index.html" class="button">See Live</a>
+        </div>
+
+        <section id="blog-body">
+            <p class="leading">
+                I built my portfolio using plain HTML, CSS and Javascript. <br>
+                <br>
+                I wanted it to have a simple design that provided the code, live version and my write up
+                for each project. I had read multiple resources that stressed the importance of showing people 
+                your projects first hand. This was an opportunity to do that <br><br>
+                I got to work going through HTML, CSS and Javascript learning material. This project allowed me 
+                to learn a bit more about how to use these tools. I was also interested in mobile first responsive 
+                design. After weeks of general research and practice, with lots of help from the internet and Youtube, 
+                I came up with this simple, highly responsive design as my portfolio.<br><br>
+                Feel free to test out it's responsiveness as well as check out the code on my github. Follow the link above
+            </p>
+        </section>
+    </section>
+
+    <span class="grid">
+      <a href="random_jokes.html" id="previous">Previous</a>
+      <a href="client_portfolio.html" id="next">Next</a>
+    </span>
+
+    <section id="contact">
+        <h3>Let's Connect</h3>
+        <p class="leading">
+          You can hire me, collaborate with me, check up on me ...
+        </p>
+        <form data-netlify="true">
+          <input type="text" placeholder="NAME" />
+          <input type="email" placeholder="EMAIL" />
+          <textarea placeholder="YOUR MESSAGE"></textarea>
+          <button type="submit" class="button">Connect</button>
+        </form>
+      </section>
+
+
+      <footer>
+        <div class="grid">
+          <p class="copyright">Copyright 2020 Ini Olorunnishola olo-ini</p>
+          <ul class="social">
+            <li>
+              <a href="https://github.com/olo-ini" target="_blank">GitHub</a>
+              <a href="https://www.linkedin.com/in/ini-olorunnishola-02473913a/" target="_blank">LinkedIn</a>
+            </li>
+          </ul>
+        </div>
+      </footer>
+</body>
+</html>

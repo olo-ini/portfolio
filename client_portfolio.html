@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Client Portfolio</title>
+    <script src="index.js"></script>
+</head>
+<body>
+    <nav class="site-nav grid">
+        <a href="index.html">
+            <h1>Ini Olorunnishola</h1>
+          </a>
+        <ul>
+            <li>
+                <a href="assets/Ini_Favour_Olorunnishola_GR.pdf" target="_blank">Resume</a>
+            </li>
+            <li>
+                <a href="#contact">Connect</a>
+            </li>
+        </ul>
+
+        <span onclick="openNav()" class="menu-logo">
+            <img src="assets/outline_menu_black_24dp.png" alt="menu" />
+          </span>
+    
+          <div id="myNav" class="overlay">
+            <!-- Button to close the overlay navigation -->
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+              >&times;</a
+            >
+            <div class="overlay-content">
+              <a href="assets/Ini_Favour_Olorunnishola_GR.pdf" target="_blank"
+                >Resume</a
+              >
+              <a href="#contact" onclick="closeNav()">Connect</a>
+            </div>
+          </div>
+    </nav>
+    <section id="portfolio2">
+        <h3>Building my Client's Portfolio</h3>
+        <div class="grid2">
+            <a href="https://github.com/olo-ini/client-portfolio" target="_blank" class="button">Code</a>
+            <a href="https://serene-darwin-376c6f.netlify.app/" target="_blank" class="button">See Live</a>
+        </div>
+
+        <section id="blog-body">
+            <p class="leading">
+                I built my client's portfolio using HTML, CSS, React and NPM (Node Package Manager) <br><br>
+                
+                This client is a fashion stylist and wanted a portfolio to display mostly images. I thought 
+                I'd build something similar to the Instagram interface as I think the social app handles
+                images the best today <br><br>
+
+                I got to work researching how to work with Images. I applied my knowledge of HTML and CSS to 
+                build the basic building blocks of the website. I used React so I could use an image gallery 
+                library I found on npm. The gallery did most things I needed it to do including opening a Lightbox.
+                I did have to use some design knowledge to resize the thumbnail for each photo <br><br>
+
+                Feel free to check it out live, test out it's responsiveness as well as check out the code on my github. Follow the link above
+            </p>
+        </section>
+    </section>
+
+    <span class="grid">
+      <a href="portfolio.html" id="previous">Previous</a>
+      <a href="consuming.html" id="next">Next</a>
+    </span>
+
+    <section id="contact">
+        <h3>Let's Connect</h3>
+        <p class="leading">
+          You can hire me, collaborate with me, check up on me ...
+        </p>
+        <form data-netlify="true">
+          <input type="text" placeholder="NAME" />
+          <input type="email" placeholder="EMAIL" />
+          <textarea placeholder="YOUR MESSAGE"></textarea>
+          <button type="submit" class="button">Connect</button>
+        </form>
+      </section>
+
+
+      <footer>
+        <div class="grid">
+          <p class="copyright">Copyright 2020 Ini Olorunnishola olo-ini</p>
+          <ul class="social">
+            <li>
+              <a href="https://github.com/olo-ini" target="_blank">GitHub</a>
+              <a href="https://www.linkedin.com/in/ini-olorunnishola-02473913a/" target="_blank">LinkedIn</a>
+            </li>
+          </ul>
+        </div>
+      </footer>
+</body>
+</html>
